@@ -12,10 +12,10 @@ on:
           - "false"
           - "true"
 
-  schedule:
-    # UTC 12:30 = 日本时间 21:30 = 北京时间 20:30
-    # 周一到周五运行
-    - cron: "30 12 * * 1-5"
+  # schedule:
+    # # UTC 12:30 = 日本时间 21:30 = 北京时间 20:30
+    # # 周一到周五运行
+    # - cron: "30 12 * * 1-5"
 
 permissions:
   contents: read
@@ -26,7 +26,7 @@ jobs:
     env:
       TZ: Asia/Shanghai
       REPORT_TIMEZONE: Asia/Shanghai
-      
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
