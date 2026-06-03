@@ -217,7 +217,7 @@ def build_email(md_path: Path, pdf_path: Path) -> EmailMessage:
             filename=md_path.name,
         )
 
-    msg["_all_recipients"] = mail_to + mail_cc + mail_bcc
+    msg.all_recipients = mail_to + mail_cc + mail_bcc
     return msg
 
 
@@ -234,8 +234,9 @@ def send_email(msg: EmailMessage) -> None:
     if not password:
         raise ValueError("MAIL_SMTP_PASSWORD is required")
 
-    recipients = msg["_all_recipients"]
-    del msg["_all_recipients"]
+    recipients = getattr(msg, "all_recipients", None)
+    if not recipients:
+        recipients = split_emails(msg.get("To", "")) + split_emails(msg.get("Cc", ""))
 
     use_ssl = os.getenv("MAIL_SMTP_SSL", "").lower()
     if use_ssl:
