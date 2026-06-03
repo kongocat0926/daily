@@ -36,13 +36,6 @@ funds:
     holding_note: 当前持有约164元，属于小额试探仓；重点观察美股科技股估值、汇率波动、QDII溢价和后续是否适合定投。
     target_weight: 0.05
 
-  - code: 000001.OF
-    name: 华夏成长混合
-    category: 偏股混合
-    strategy: 主动权益基金，关注A股成长风格
-    holding_note: 示例，替换成你的真实基金
-    target_weight: 0.10
-
 indices:
   - code: sh000300
     name: 沪深300
