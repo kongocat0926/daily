@@ -26,15 +26,15 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v6
+        uses: actions/checkout@v4
 
       - name: Set up Python
-        uses: actions/setup-python@v6
+        uses: actions/setup-python@v5
         with:
           python-version: "3.11"
           cache: "pip"
 
-      - name: Install dependencies
+      - name: Install Python dependencies
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
@@ -48,7 +48,7 @@ jobs:
 
           # Gemini：负责联网搜索
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
-          GEMINI_SEARCH_MODEL: gemini-3.5-flash
+          GEMINI_SEARCH_MODEL: gemini-2.5-flash
 
           # Tushare：可选，负责基金净值/持仓等结构化数据
           TUSHARE_TOKEN: ${{ secrets.TUSHARE_TOKEN }}
@@ -59,18 +59,7 @@ jobs:
             python run.py --config config.yaml
           fi
 
-      - name: Upload report artifacts
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: fund-report-${{ github.run_id }}
-          path: |
-            reports/
-            data/
-          retention-days: 30
-
-
-                - name: Install PDF dependencies
+      - name: Install PDF dependencies
         run: |
           sudo apt-get update
           sudo apt-get install -y fonts-noto-cjk
@@ -90,3 +79,13 @@ jobs:
           MAIL_ATTACH_MD: "false"
         run: |
           python tools/email_pdf_report.py --report-dir reports
+
+      - name: Upload report artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: fund-report-${{ github.run_id }}
+          path: |
+            reports/
+            data/
+          retention-days: 30
