@@ -23,7 +23,10 @@ permissions:
 jobs:
   run-fund-agent:
     runs-on: ubuntu-latest
-
+    env:
+      TZ: Asia/Shanghai
+      REPORT_TIMEZONE: Asia/Shanghai
+      
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
