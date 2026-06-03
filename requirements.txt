@@ -9,3 +9,6 @@ akshare>=1.15.0
 
 # Optional: use only if you have a Tushare Pro token
 tushare>=1.4.0
+
+markdown>=3.6
+playwright>=1.48.0

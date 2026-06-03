@@ -68,3 +68,25 @@ jobs:
             reports/
             data/
           retention-days: 30
+
+
+                - name: Install PDF dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y fonts-noto-cjk
+          python -m playwright install --with-deps chromium
+
+      - name: Convert markdown report to PDF and send email
+        env:
+          MAIL_SMTP_HOST: ${{ secrets.MAIL_SMTP_HOST }}
+          MAIL_SMTP_PORT: ${{ secrets.MAIL_SMTP_PORT }}
+          MAIL_SMTP_USER: ${{ secrets.MAIL_SMTP_USER }}
+          MAIL_SMTP_PASSWORD: ${{ secrets.MAIL_SMTP_PASSWORD }}
+          MAIL_FROM: ${{ secrets.MAIL_FROM }}
+          MAIL_TO: ${{ secrets.MAIL_TO }}
+          MAIL_CC: ${{ secrets.MAIL_CC }}
+          MAIL_BCC: ${{ secrets.MAIL_BCC }}
+          MAIL_SUBJECT_PREFIX: 基金日报
+          MAIL_ATTACH_MD: "false"
+        run: |
+          python tools/email_pdf_report.py --report-dir reports
