@@ -18,14 +18,11 @@ llm:
   temperature: 0.2
 
 search:
-  provider: perplexity
-  api_key_env: PERPLEXITY_API_KEY
-  model_env: PERPLEXITY_MODEL
+  provider: gemini
+  api_key_env: GEMINI_API_KEY
+  model_env: GEMINI_SEARCH_MODEL
   max_queries_per_run: 6
   days_recent: 7
-  market_queries:
-    - 今日A股市场 基金 重要消息 政策 债市 汇率 科技 消费 医药 红利
-    - 今日公募基金 ETF 债券基金 QDII 基金 最新消息
 
 # code 可填 000001.OF / 110022.OF / 512100.SH 等；普通开放式基金通常是 .OF
 funds:

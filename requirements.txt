@@ -3,7 +3,9 @@ python-dotenv>=1.0.1
 PyYAML>=6.0.2
 requests>=2.32.3
 openai>=1.50.0
+google-genai>=1.0.0
 pandas>=2.0.0
 akshare>=1.15.0
+
 # Optional: use only if you have a Tushare Pro token
-# tushare>=1.4.0
+tushare>=1.4.0

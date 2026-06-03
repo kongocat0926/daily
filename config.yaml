@@ -1,1 +1,54 @@
+user:
+  risk_profile: 平衡型
+  horizon: 中长期，主要做基金定投和仓位观察，不做短线交易
+  report_style: 简洁、证据优先、少说废话
 
+runtime:
+  timezone: Asia/Tokyo
+  days_lookback: 30
+  output_dir: reports
+  data_dir: data
+  use_demo_data: false
+
+llm:
+  provider: openai_compatible
+  model_env: LLM_MODEL
+  api_key_env: LLM_API_KEY
+  base_url_env: LLM_BASE_URL
+  temperature: 0.2
+
+search:
+  provider: gemini
+  api_key_env: GEMINI_API_KEY
+  model_env: GEMINI_SEARCH_MODEL
+  max_queries_per_run: 6
+  days_recent: 7
+  market_queries:
+    - 今日A股市场 公募基金 ETF 债券基金 QDII 重要消息 政策 债市 汇率 科技 消费 医药 红利
+    - 今日中国基金市场 公募基金发行 ETF资金流 债券基金 红利基金 指数基金 最新消息
+    - 今日海外市场 美股 港股 日经 黄金 美元指数 对QDII基金影响
+
+funds:
+  - code: 006479.OF
+    name: 广发纳斯达克100ETF联接（QDII）C
+    category: QDII / 纳斯达克100 / 海外科技成长
+    strategy: 跟踪纳斯达克100指数，主要受美股科技股、美元汇率、美国利率预期和QDII额度/溢价影响；适合作为海外科技方向的卫星仓位，不适合作为单一重仓。
+    holding_note: 当前持有约164元，属于小额试探仓；重点观察美股科技股估值、汇率波动、QDII溢价和后续是否适合定投。
+    target_weight: 0.05
+
+  - code: 000001.OF
+    name: 华夏成长混合
+    category: 偏股混合
+    strategy: 主动权益基金，关注A股成长风格
+    holding_note: 示例，替换成你的真实基金
+    target_weight: 0.10
+
+indices:
+  - code: sh000300
+    name: 沪深300
+  - code: sh000905
+    name: 中证500
+  - code: sh000852
+    name: 中证1000
+  - code: sz399006
+    name: 创业板指

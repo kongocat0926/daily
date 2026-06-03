@@ -1,1 +1,70 @@
+name: Fund Daily Agent
 
+on:
+  workflow_dispatch:
+    inputs:
+      demo:
+        description: "Run with demo data?"
+        required: true
+        default: "false"
+        type: choice
+        options:
+          - "false"
+          - "true"
+
+  schedule:
+    # UTC 12:30 = 日本时间 21:30 = 北京时间 20:30
+    # 周一到周五运行
+    - cron: "30 12 * * 1-5"
+
+permissions:
+  contents: read
+
+jobs:
+  run-fund-agent:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.11"
+          cache: "pip"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Run fund daily agent
+        env:
+          # Qwen：负责最终日报生成
+          LLM_API_KEY: ${{ secrets.LLM_API_KEY }}
+          LLM_BASE_URL: https://dashscope.aliyuncs.com/compatible-mode/v1
+          LLM_MODEL: qwen-plus
+
+          # Gemini：负责联网搜索
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          GEMINI_SEARCH_MODEL: gemini-3.5-flash
+
+          # Tushare：可选，负责基金净值/持仓等结构化数据
+          TUSHARE_TOKEN: ${{ secrets.TUSHARE_TOKEN }}
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ] && [ "${{ inputs.demo }}" = "true" ]; then
+            python run.py --config config.yaml --demo
+          else
+            python run.py --config config.yaml
+          fi
+
+      - name: Upload report artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: fund-report-${{ github.run_id }}
+          path: |
+            reports/
+            data/
+          retention-days: 30
