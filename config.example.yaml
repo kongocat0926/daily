@@ -1,0 +1,52 @@
+user:
+  risk_profile: 平衡型
+  horizon: 中长期，主要做基金定投和仓位观察，不做短线交易
+  report_style: 简洁、证据优先、少说废话
+
+runtime:
+  timezone: Asia/Tokyo
+  days_lookback: 30
+  output_dir: reports
+  data_dir: data
+  use_demo_data: false
+
+llm:
+  provider: openai_compatible
+  model_env: LLM_MODEL
+  api_key_env: LLM_API_KEY
+  base_url_env: LLM_BASE_URL
+  temperature: 0.2
+
+search:
+  provider: perplexity
+  api_key_env: PERPLEXITY_API_KEY
+  model_env: PERPLEXITY_MODEL
+  max_queries_per_run: 6
+  days_recent: 7
+  market_queries:
+    - 今日A股市场 基金 重要消息 政策 债市 汇率 科技 消费 医药 红利
+    - 今日公募基金 ETF 债券基金 QDII 基金 最新消息
+
+# code 可填 000001.OF / 110022.OF / 512100.SH 等；普通开放式基金通常是 .OF
+funds:
+  - code: 000001.OF
+    name: 华夏成长混合
+    category: 偏股混合
+    strategy: 老牌主动权益基金，关注A股成长风格
+    holding_note: 示例基金，替换成你的真实持仓
+    target_weight: 0.10
+  - code: 110022.OF
+    name: 易方达消费行业股票
+    category: 消费主题
+    strategy: 消费行业主题，关注白酒、食品饮料、零售等方向
+    target_weight: 0.10
+
+indices:
+  - code: sh000300
+    name: 沪深300
+  - code: sh000905
+    name: 中证500
+  - code: sh000852
+    name: 中证1000
+  - code: sz399006
+    name: 创业板指

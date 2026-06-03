@@ -1,0 +1,135 @@
+{
+  "generated_at": "2026-06-03T01:04:50",
+  "user": {
+    "risk_profile": "平衡型",
+    "horizon": "中长期，主要做基金定投和仓位观察，不做短线交易",
+    "report_style": "简洁、证据优先、少说废话"
+  },
+  "funds_config": [
+    {
+      "code": "000001.OF",
+      "name": "华夏成长混合",
+      "category": "偏股混合",
+      "strategy": "老牌主动权益基金，关注A股成长风格",
+      "holding_note": "示例基金，替换成你的真实持仓",
+      "target_weight": 0.1
+    },
+    {
+      "code": "110022.OF",
+      "name": "易方达消费行业股票",
+      "category": "消费主题",
+      "strategy": "消费行业主题，关注白酒、食品饮料、零售等方向",
+      "target_weight": 0.1
+    }
+  ],
+  "market_data": {
+    "funds": [
+      {
+        "code": "000001.OF",
+        "name": "华夏成长混合",
+        "category": "偏股混合",
+        "strategy": "老牌主动权益基金，关注A股成长风格",
+        "holding_note": "示例基金，替换成你的真实持仓",
+        "target_weight": 0.1,
+        "ts_code": "000001.OF",
+        "source": "demo",
+        "latest_date": "demo",
+        "latest_nav": 1.1,
+        "accum_nav": null,
+        "change_1d_pct": 0.0,
+        "change_lookback_pct": 1.6,
+        "nav_tail": [],
+        "portfolio_top10": []
+      },
+      {
+        "code": "110022.OF",
+        "name": "易方达消费行业股票",
+        "category": "消费主题",
+        "strategy": "消费行业主题，关注白酒、食品饮料、零售等方向",
+        "target_weight": 0.1,
+        "ts_code": "110022.OF",
+        "source": "demo",
+        "latest_date": "demo",
+        "latest_nav": 1.15,
+        "accum_nav": null,
+        "change_1d_pct": 0.49812112208336146,
+        "change_lookback_pct": 5.6,
+        "nav_tail": [],
+        "portfolio_top10": []
+      }
+    ],
+    "indices": [
+      {
+        "code": "sh000300",
+        "name": "沪深300",
+        "source": "demo",
+        "latest_date": "demo",
+        "latest_close": 3196.8,
+        "change_1d_pct": 0.7,
+        "change_lookback_pct": 6.3,
+        "tail": []
+      },
+      {
+        "code": "sh000905",
+        "name": "中证500",
+        "source": "demo",
+        "latest_date": "demo",
+        "latest_close": 3098.4,
+        "change_1d_pct": -0.1,
+        "change_lookback_pct": 0.7,
+        "tail": []
+      },
+      {
+        "code": "sh000852",
+        "name": "中证1000",
+        "source": "demo",
+        "latest_date": "demo",
+        "latest_close": 3110.7,
+        "change_1d_pct": 0.0,
+        "change_lookback_pct": 1.4,
+        "tail": []
+      },
+      {
+        "code": "sz399006",
+        "name": "创业板指",
+        "source": "demo",
+        "latest_date": "demo",
+        "latest_close": 3012.3,
+        "change_1d_pct": -0.8,
+        "change_lookback_pct": -4.2,
+        "tail": []
+      }
+    ]
+  },
+  "news_results": [
+    {
+      "query": "今日A股市场 基金 重要消息 政策 债市 汇率 科技 消费 医药 红利",
+      "provider": "none",
+      "answer": "未配置 PERPLEXITY_API_KEY，跳过联网新闻检索。",
+      "citations": [],
+      "search_results": []
+    },
+    {
+      "query": "今日公募基金 ETF 债券基金 QDII 基金 最新消息",
+      "provider": "none",
+      "answer": "未配置 PERPLEXITY_API_KEY，跳过联网新闻检索。",
+      "citations": [],
+      "search_results": []
+    },
+    {
+      "query": "华夏成长混合 偏股混合 老牌主动权益基金，关注A股成长风格 最近7天 最新消息 基金 影响",
+      "provider": "none",
+      "answer": "未配置 PERPLEXITY_API_KEY，跳过联网新闻检索。",
+      "citations": [],
+      "search_results": []
+    },
+    {
+      "query": "易方达消费行业股票 消费主题 消费行业主题，关注白酒、食品饮料、零售等方向 最近7天 最新消息 基金 影响",
+      "provider": "none",
+      "answer": "未配置 PERPLEXITY_API_KEY，跳过联网新闻检索。",
+      "citations": [],
+      "search_results": []
+    }
+  ],
+  "disclaimer": "本文仅用于个人研究和持仓观察，不构成投资建议；基金有风险，申购需谨慎。"
+}
